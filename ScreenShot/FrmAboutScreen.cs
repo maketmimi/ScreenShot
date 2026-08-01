@@ -11,7 +11,7 @@ namespace ScreenShot
 
         private void PbLogo_Click(object sender, System.EventArgs e)
         {
-            System.Diagnostics.Process.Start("https://github.com/maketmimi/TicTacToe");
+            System.Diagnostics.Process.Start("https://github.com/maketmimi/ScreenShot");
         }
     }
 }

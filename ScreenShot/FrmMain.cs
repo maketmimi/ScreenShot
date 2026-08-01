@@ -1,13 +1,11 @@
 ﻿using ScreenShot.Properties;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
+using System.Drawing.Imaging;
 using System.Windows.Forms;
+using Microsoft.Win32;
 
 namespace ScreenShot
 {
@@ -19,6 +17,7 @@ namespace ScreenShot
         }
 
         private FrmAboutScreen _FrmAbout;
+        private readonly string _DefaultScreenShotsSaveLocation = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
 
         private void aboutAppToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -40,7 +39,7 @@ namespace ScreenShot
 
         private void LibMalekGithub_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("https://github.com/maketmimi/PowerWatcher");
+            System.Diagnostics.Process.Start("https://github.com/maketmimi");
             LibMalekGithub.LinkVisited = true;
         }
 
@@ -54,7 +53,6 @@ namespace ScreenShot
         {
             CShowAppToolStripMenuItem.Enabled = !this.Visible;
             CAlwaysOnTopToolStripMenuItem.Checked = Settings.Default.IsAlwaysOnTop;
-
         }
 
         private void alwaysOnTopToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
@@ -72,6 +70,74 @@ namespace ScreenShot
         private void CShowAppToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Show();
+        }
+
+        private void changeSaveLocationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (FbdChangeSaveLocation.ShowDialog() == DialogResult.OK)
+            {
+                Settings.Default.ScreenShotsSaveLocation = FbdChangeSaveLocation.SelectedPath;
+                Settings.Default.Save();
+
+                NifNotifications.Visible = true;
+                NifNotifications.ShowBalloonTip(10000, "Path Changed", "Screenshots folder path updated successfully.", ToolTipIcon.Info);
+            }
+        }
+
+        private bool SaveScreenShot(Image ScreenShot)
+        {
+            if (ScreenShot == null) return false;
+
+            string ScreenShotName =
+                    "Screenshot_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".png";
+
+            string SaveFolderPath = Directory.Exists(Settings.Default.ScreenShotsSaveLocation) ?
+                Settings.Default.ScreenShotsSaveLocation :
+                _DefaultScreenShotsSaveLocation;
+
+            ScreenShot.Save(Path.Combine(SaveFolderPath, ScreenShotName), ImageFormat.Png);
+            return true;
+        }
+
+        private void PasteScreenShot_Click(object sender, EventArgs e)
+        {
+            NifNotifications.Visible = true;
+            
+            if (Clipboard.ContainsImage())
+            {
+                if (SaveScreenShot(Clipboard.GetImage()))
+                    NifNotifications.ShowBalloonTip(10000, "Done", "Screenshot saved successfully.", ToolTipIcon.Info);
+            }
+            else
+            {
+                NifNotifications.ShowBalloonTip(10000, "Failed To Paste Screenshot!", "Unable to find screenshot in the clipboard!", ToolTipIcon.Error);
+            }
+        }
+
+        private void NifNotifications_BalloonTipClosed(object sender, EventArgs e)
+        {
+            NifNotifications.Visible = false;
+        }
+
+        private void TakeScreenshot_Click(object sender, EventArgs e)
+        {
+            bool ShowForm = this.Visible;
+            this.Hide();
+
+            Rectangle FullScreenBounds = SystemInformation.VirtualScreen;
+            Bitmap Screenshot = new Bitmap(FullScreenBounds.Width, FullScreenBounds.Height, PixelFormat.Format32bppArgb);
+            Graphics gScreenshot = Graphics.FromImage(Screenshot);
+
+            gScreenshot.CopyFromScreen(FullScreenBounds.Location, new Point(0, 0), FullScreenBounds.Size, CopyPixelOperation.SourceCopy);
+
+            NifNotifications.Visible = true;
+
+            if (SaveScreenShot(Screenshot))
+                NifNotifications.ShowBalloonTip(10000, "Done", "The Screenshot has been Taken and saved successfully.", ToolTipIcon.Info);
+            else
+                NifNotifications.ShowBalloonTip(10000, "Failed To take Screenshot!", "Unable to take screen shot.", ToolTipIcon.Error);
+
+            this.Visible = ShowForm;
         }
     }
 }
