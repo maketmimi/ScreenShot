@@ -97,7 +97,7 @@
             this.hideToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("hideToolStripMenuItem.Image")));
             this.hideToolStripMenuItem.Name = "hideToolStripMenuItem";
             this.hideToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.H)));
-            this.hideToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.hideToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.hideToolStripMenuItem.Text = "&Hide";
             this.hideToolStripMenuItem.Click += new System.EventHandler(this.HideApp_Click);
             // 

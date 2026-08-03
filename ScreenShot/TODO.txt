@@ -1,3 +1,2 @@
 ﻿Patse screen 
-tab indexs
 view recent screenshot on ballontip click

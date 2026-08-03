@@ -45,8 +45,15 @@ namespace ScreenShot
 
         private void NifTrayIcon_MouseClick(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
-                this.Show();
+            switch (e.Button)
+            {
+                case MouseButtons.Left:
+                    TakeScreenShot();
+                    break;
+                case MouseButtons.Middle:
+                    PasteScreenShot();
+                    break;
+            }
         }
 
         private void CmIconTray_Opening(object sender, CancelEventArgs e)
@@ -99,10 +106,10 @@ namespace ScreenShot
             return true;
         }
 
-        private void PasteScreenShot_Click(object sender, EventArgs e)
+        private void PasteScreenShot()
         {
             NifNotifications.Visible = true;
-            
+
             if (Clipboard.ContainsImage())
             {
                 if (SaveScreenShot(Clipboard.GetImage()))
@@ -114,12 +121,17 @@ namespace ScreenShot
             }
         }
 
+        private void PasteScreenShot_Click(object sender, EventArgs e)
+        {
+            PasteScreenShot();
+        }
+
         private void NifNotifications_BalloonTipClosed(object sender, EventArgs e)
         {
             NifNotifications.Visible = false;
         }
 
-        private void TakeScreenshot_Click(object sender, EventArgs e)
+        private void TakeScreenShot()
         {
             bool ShowForm = this.Visible;
             this.Hide();
@@ -138,6 +150,11 @@ namespace ScreenShot
                 NifNotifications.ShowBalloonTip(10000, "Failed To take Screenshot!", "Unable to take screen shot.", ToolTipIcon.Error);
 
             this.Visible = ShowForm;
+        }
+
+        private void TakeScreenshot_Click(object sender, EventArgs e)
+        {
+            TakeScreenShot();
         }
     }
 }
