@@ -63,6 +63,8 @@
             this.CExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.FbdChangeSaveLocation = new System.Windows.Forms.FolderBrowserDialog();
             this.NifNotifications = new System.Windows.Forms.NotifyIcon(this.components);
+            this.takeSingleScreenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.CtTakeSingleScreentoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MsrMainMenu.SuspendLayout();
             this.CmIconTray.SuspendLayout();
             this.SuspendLayout();
@@ -118,7 +120,8 @@
             // 
             this.actionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.takeFullScreenShotToolStripMenuItem,
-            this.pasteScreenShotToolStripMenuItem});
+            this.pasteScreenShotToolStripMenuItem,
+            this.takeSingleScreenToolStripMenuItem});
             this.actionsToolStripMenuItem.Name = "actionsToolStripMenuItem";
             this.actionsToolStripMenuItem.Size = new System.Drawing.Size(62, 21);
             this.actionsToolStripMenuItem.Text = "Ac&tions";
@@ -129,7 +132,7 @@
             this.takeFullScreenShotToolStripMenuItem.Name = "takeFullScreenShotToolStripMenuItem";
             this.takeFullScreenShotToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
             | System.Windows.Forms.Keys.T)));
-            this.takeFullScreenShotToolStripMenuItem.Size = new System.Drawing.Size(239, 22);
+            this.takeFullScreenShotToolStripMenuItem.Size = new System.Drawing.Size(287, 22);
             this.takeFullScreenShotToolStripMenuItem.Text = "Take &ScreenShot";
             this.takeFullScreenShotToolStripMenuItem.Click += new System.EventHandler(this.TakeScreenshot_Click);
             // 
@@ -138,7 +141,7 @@
             this.pasteScreenShotToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("pasteScreenShotToolStripMenuItem.Image")));
             this.pasteScreenShotToolStripMenuItem.Name = "pasteScreenShotToolStripMenuItem";
             this.pasteScreenShotToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
-            this.pasteScreenShotToolStripMenuItem.Size = new System.Drawing.Size(239, 22);
+            this.pasteScreenShotToolStripMenuItem.Size = new System.Drawing.Size(287, 22);
             this.pasteScreenShotToolStripMenuItem.Text = "&Paste ScreenShot";
             this.pasteScreenShotToolStripMenuItem.Click += new System.EventHandler(this.PasteScreenShot_Click);
             // 
@@ -293,6 +296,7 @@
             this.toolStripSeparator3,
             this.CTakeScreenShotToolStripMenuItem,
             this.CPasteScreenShotToolStripMenuItem,
+            this.CtTakeSingleScreentoolStripMenuItem,
             this.toolStripSeparator4,
             this.CAlwaysOnTopToolStripMenuItem,
             this.CChangeSaveLocationToolStripMenuItem,
@@ -300,21 +304,21 @@
             this.CExitToolStripMenuItem});
             this.CmIconTray.Name = "CmIconTray";
             this.CmIconTray.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.CmIconTray.Size = new System.Drawing.Size(280, 154);
+            this.CmIconTray.Size = new System.Drawing.Size(288, 198);
             this.CmIconTray.Opening += new System.ComponentModel.CancelEventHandler(this.CmIconTray_Opening);
             // 
             // CShowAppToolStripMenuItem
             // 
             this.CShowAppToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("CShowAppToolStripMenuItem.Image")));
             this.CShowAppToolStripMenuItem.Name = "CShowAppToolStripMenuItem";
-            this.CShowAppToolStripMenuItem.Size = new System.Drawing.Size(279, 22);
+            this.CShowAppToolStripMenuItem.Size = new System.Drawing.Size(287, 22);
             this.CShowAppToolStripMenuItem.Text = "Sho&w App";
             this.CShowAppToolStripMenuItem.Click += new System.EventHandler(this.CShowAppToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(276, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(284, 6);
             // 
             // CTakeScreenShotToolStripMenuItem
             // 
@@ -322,7 +326,7 @@
             this.CTakeScreenShotToolStripMenuItem.Name = "CTakeScreenShotToolStripMenuItem";
             this.CTakeScreenShotToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
             | System.Windows.Forms.Keys.T)));
-            this.CTakeScreenShotToolStripMenuItem.Size = new System.Drawing.Size(279, 22);
+            this.CTakeScreenShotToolStripMenuItem.Size = new System.Drawing.Size(287, 22);
             this.CTakeScreenShotToolStripMenuItem.Text = "Take &ScreenShot";
             this.CTakeScreenShotToolStripMenuItem.Click += new System.EventHandler(this.TakeScreenshot_Click);
             // 
@@ -333,20 +337,20 @@
             this.CPasteScreenShotToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
             | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.V)));
-            this.CPasteScreenShotToolStripMenuItem.Size = new System.Drawing.Size(279, 22);
+            this.CPasteScreenShotToolStripMenuItem.Size = new System.Drawing.Size(287, 22);
             this.CPasteScreenShotToolStripMenuItem.Text = "&Paste ScreenShot";
             this.CPasteScreenShotToolStripMenuItem.Click += new System.EventHandler(this.PasteScreenShot_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(276, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(284, 6);
             // 
             // CAlwaysOnTopToolStripMenuItem
             // 
             this.CAlwaysOnTopToolStripMenuItem.CheckOnClick = true;
             this.CAlwaysOnTopToolStripMenuItem.Name = "CAlwaysOnTopToolStripMenuItem";
-            this.CAlwaysOnTopToolStripMenuItem.Size = new System.Drawing.Size(279, 22);
+            this.CAlwaysOnTopToolStripMenuItem.Size = new System.Drawing.Size(287, 22);
             this.CAlwaysOnTopToolStripMenuItem.Text = "Always On Top";
             this.CAlwaysOnTopToolStripMenuItem.CheckedChanged += new System.EventHandler(this.alwaysOnTopToolStripMenuItem_CheckedChanged);
             // 
@@ -356,20 +360,20 @@
             this.CChangeSaveLocationToolStripMenuItem.Name = "CChangeSaveLocationToolStripMenuItem";
             this.CChangeSaveLocationToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.L)));
-            this.CChangeSaveLocationToolStripMenuItem.Size = new System.Drawing.Size(279, 22);
+            this.CChangeSaveLocationToolStripMenuItem.Size = new System.Drawing.Size(287, 22);
             this.CChangeSaveLocationToolStripMenuItem.Text = "Change Save &Location";
             this.CChangeSaveLocationToolStripMenuItem.Click += new System.EventHandler(this.changeSaveLocationToolStripMenuItem_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(276, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(284, 6);
             // 
             // CExitToolStripMenuItem
             // 
             this.CExitToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("CExitToolStripMenuItem.Image")));
             this.CExitToolStripMenuItem.Name = "CExitToolStripMenuItem";
-            this.CExitToolStripMenuItem.Size = new System.Drawing.Size(279, 22);
+            this.CExitToolStripMenuItem.Size = new System.Drawing.Size(287, 22);
             this.CExitToolStripMenuItem.Text = "&Exit";
             this.CExitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -383,6 +387,28 @@
             this.NifNotifications.Icon = ((System.Drawing.Icon)(resources.GetObject("NifNotifications.Icon")));
             this.NifNotifications.Text = "ScreenShot";
             this.NifNotifications.BalloonTipClosed += new System.EventHandler(this.NifNotifications_BalloonTipClosed);
+            // 
+            // takeSingleScreenToolStripMenuItem
+            // 
+            this.takeSingleScreenToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("takeSingleScreenToolStripMenuItem.Image")));
+            this.takeSingleScreenToolStripMenuItem.Name = "takeSingleScreenToolStripMenuItem";
+            this.takeSingleScreenToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
+            | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.T)));
+            this.takeSingleScreenToolStripMenuItem.Size = new System.Drawing.Size(287, 22);
+            this.takeSingleScreenToolStripMenuItem.Text = "Take Single Screen";
+            this.takeSingleScreenToolStripMenuItem.Click += new System.EventHandler(this.takeSingleScreenToolStripMenuItem_Click);
+            // 
+            // CtTakeSingleScreentoolStripMenuItem
+            // 
+            this.CtTakeSingleScreentoolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("CtTakeSingleScreentoolStripMenuItem.Image")));
+            this.CtTakeSingleScreentoolStripMenuItem.Name = "CtTakeSingleScreentoolStripMenuItem";
+            this.CtTakeSingleScreentoolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
+            | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.T)));
+            this.CtTakeSingleScreentoolStripMenuItem.Size = new System.Drawing.Size(287, 22);
+            this.CtTakeSingleScreentoolStripMenuItem.Text = "Take Single Screen";
+            this.CtTakeSingleScreentoolStripMenuItem.Click += new System.EventHandler(this.takeSingleScreenToolStripMenuItem_Click);
             // 
             // FrmMain
             // 
@@ -446,6 +472,8 @@
         private System.Windows.Forms.ToolStripMenuItem CAlwaysOnTopToolStripMenuItem;
         private System.Windows.Forms.FolderBrowserDialog FbdChangeSaveLocation;
         private System.Windows.Forms.NotifyIcon NifNotifications;
+        private System.Windows.Forms.ToolStripMenuItem takeSingleScreenToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem CtTakeSingleScreentoolStripMenuItem;
     }
 }
 

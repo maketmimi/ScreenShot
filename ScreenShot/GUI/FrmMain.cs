@@ -6,6 +6,7 @@ using System.IO;
 using System.Drawing.Imaging;
 using System.Windows.Forms;
 using Microsoft.Win32;
+using ScreenShot.GUI;
 
 namespace ScreenShot
 {
@@ -48,7 +49,7 @@ namespace ScreenShot
             switch (e.Button)
             {
                 case MouseButtons.Left:
-                    TakeScreenShot();
+                    TakeSingleScreenShot();
                     break;
                 case MouseButtons.Middle:
                     PasteScreenShot();
@@ -131,16 +132,20 @@ namespace ScreenShot
             NifNotifications.Visible = false;
         }
 
-        private void TakeScreenShot()
+        private void TakeFullScreenShot()
+        {
+            TakeScreenShot(SystemInformation.VirtualScreen);
+        }
+
+        private void TakeScreenShot(Rectangle ScreenBounds)
         {
             bool ShowForm = this.Visible;
             this.Hide();
 
-            Rectangle FullScreenBounds = SystemInformation.VirtualScreen;
-            Bitmap Screenshot = new Bitmap(FullScreenBounds.Width, FullScreenBounds.Height, PixelFormat.Format32bppArgb);
+            Bitmap Screenshot = new Bitmap(ScreenBounds.Width, ScreenBounds.Height, PixelFormat.Format32bppArgb);
             Graphics gScreenshot = Graphics.FromImage(Screenshot);
 
-            gScreenshot.CopyFromScreen(FullScreenBounds.Location, new Point(0, 0), FullScreenBounds.Size, CopyPixelOperation.SourceCopy);
+            gScreenshot.CopyFromScreen(ScreenBounds.Location, new Point(0, 0), ScreenBounds.Size, CopyPixelOperation.SourceCopy);
 
             NifNotifications.Visible = true;
 
@@ -154,7 +159,20 @@ namespace ScreenShot
 
         private void TakeScreenshot_Click(object sender, EventArgs e)
         {
-            TakeScreenShot();
+            TakeFullScreenShot();
+        }
+
+        private void TakeSingleScreenShot()
+        {
+            Screen ScreenToTakeScreenShotFor = FrmScreenSelector.SelectScreen();
+
+            if (ScreenToTakeScreenShotFor != null)
+                TakeScreenShot(ScreenToTakeScreenShotFor.Bounds);
+        }
+
+        private void takeSingleScreenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TakeSingleScreenShot();
         }
     }
 }
