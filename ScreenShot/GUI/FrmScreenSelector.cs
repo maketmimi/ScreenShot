@@ -5,6 +5,14 @@ namespace ScreenShot.GUI
 {
     public partial class FrmScreenSelector : Form
     {
+        public static byte NumberOfCurrentDisplays
+        {
+            get
+            {
+                return ((byte)Screen.AllScreens.Length);
+            }
+        }
+
         public static Screen SelectScreen()
         {
             FrmScreenSelector screenSelector = new FrmScreenSelector();
@@ -110,6 +118,8 @@ namespace ScreenShot.GUI
 
         private void DisplayAllSubScreens()
         {
+            if (_SubScreensForms == null) return;
+
             foreach (var subScreen in _SubScreensForms)
             {
                 subScreen.Show();
@@ -124,12 +134,12 @@ namespace ScreenShot.GUI
 
         private void FrmScreenSelector_MouseEnter(object sender, System.EventArgs e)
         {
-            this.BackColor = Color.White;
+            this.BackColor = Color.Black;
         }
 
         private void FrmScreenSelector_MouseLeave(object sender, System.EventArgs e)
         {
-            this.BackColor = Color.Black;
+            this.BackColor = Color.White;
         }
     }
 }

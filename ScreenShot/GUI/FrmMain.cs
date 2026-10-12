@@ -44,12 +44,20 @@ namespace ScreenShot
             LibMalekGithub.LinkVisited = true;
         }
 
+        private void MouseLeftButtonClickedOnIconTray()
+        {
+            if (FrmScreenSelector.NumberOfCurrentDisplays > 1)
+                TakeSingleScreenShot();
+            else
+                TakeFullScreenShot();
+        }
+
         private void NifTrayIcon_MouseClick(object sender, MouseEventArgs e)
         {
             switch (e.Button)
             {
                 case MouseButtons.Left:
-                    TakeSingleScreenShot();
+                    MouseLeftButtonClickedOnIconTray();
                     break;
                 case MouseButtons.Middle:
                     PasteScreenShot();
