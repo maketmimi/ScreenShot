@@ -134,12 +134,12 @@ namespace ScreenShot.GUI
 
         private void FrmScreenSelector_MouseEnter(object sender, System.EventArgs e)
         {
-            this.BackColor = Color.Black;
+            this.BackColor = Color.White;
         }
 
         private void FrmScreenSelector_MouseLeave(object sender, System.EventArgs e)
         {
-            this.BackColor = Color.White;
+            this.BackColor = Color.Black;
         }
     }
 }
